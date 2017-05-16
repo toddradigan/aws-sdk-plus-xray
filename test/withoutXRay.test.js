@@ -1,10 +1,6 @@
-describe('with XRAY_DISABLED=true', () => {
+describe('NODE_ENV is "test"', () => {
   beforeEach(() => {
-    process.env.XRAY_DISABLED = 'true';
-  });
-
-  afterEach(() => {
-    delete process.env.XRAY_DISABLED;
+    process.env.NODE_ENV = 'test';
   });
 
   it('exports the default aws-sdk', () => {
