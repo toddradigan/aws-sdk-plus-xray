@@ -1,6 +1,6 @@
 {
   "name": "aws-sdk-plus-xray",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Wrapper around the aws-sdk and aws-xray-sdk-core",
   "main": "index.js",
   "scripts": {
@@ -24,9 +24,11 @@
     "aws",
     "xray"
   ],
-  "peerDependencies": {
-    "aws-sdk": "^2.50.0",
+  "dependencies": {
     "aws-xray-sdk": "^1.1.0"
+  },
+  "peerDependencies": {
+    "aws-sdk": "^2.50.0"
   },
   "devDependencies": {
     "aws-sdk": "^2.50.0",
