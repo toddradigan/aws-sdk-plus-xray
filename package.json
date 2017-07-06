@@ -28,10 +28,10 @@
     "aws-xray-sdk": "^1.1.2"
   },
   "peerDependencies": {
-    "aws-sdk": "^2.80.0"
+    "aws-sdk": "^2.79.0"
   },
   "devDependencies": {
-    "aws-sdk": "^2.80.0",
+    "aws-sdk": "^2.79.0",
     "aws-xray-sdk": "^1.1.2",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.1.3",
