@@ -3,8 +3,7 @@
 const AWS = require('aws-sdk');
 const AWSXRay = require('aws-xray-sdk');
 
-module.exports = (options) => {
-  options = options || {}; // eslint-disable-line no-param-reassign
+function withOptions(options = {}) {
   const disabled = process.env.XRAY_DISABLED === undefined
     ? (process.env.NODE_ENV === 'test')
     : process.env.XRAY_DISABLED;
@@ -26,4 +25,8 @@ module.exports = (options) => {
   }
 
   return AWSXRay.captureAWS(AWS);
-};
+}
+
+module.exports = withOptions();
+
+module.exports.withOptions = withOptions;
