@@ -3,7 +3,7 @@ describe('exports the default aws-sdk', () => {
     process.env.XRAY_DISABLED = true;
     process.env.NODE_ENV = 'dev';
 
-    const AWS = require('../')(); // eslint-disable-line
+    const AWS = require('../'); // eslint-disable-line
     expect(new AWS.S3()).toBeDefined();
   });
 
@@ -11,7 +11,7 @@ describe('exports the default aws-sdk', () => {
     process.env.XRAY_DISABLED = undefined;
     process.env.NODE_ENV = 'test';
 
-    const AWS = require('../')(); // eslint-disable-line
+    const AWS = require('../'); // eslint-disable-line
     expect(new AWS.S3()).toBeDefined();
   });
 });

@@ -16,22 +16,22 @@ describe('exports aws-sdk wrapped with the aws-xray-sdk', () => {
     });
 
     test('with no config options', () => {
-      const AWS = require('../')(); // eslint-disable-line global-require
+      const AWS = require('../'); // eslint-disable-line global-require
       expect(new AWS.S3()).toBeDefined();
     });
 
     test('with logger config option', () => {
-      const AWS = require('../')({ logger: console }); // eslint-disable-line global-require
+      const AWS = require('../').withOptions({ logger: console }); // eslint-disable-line global-require
       expect(new AWS.S3()).toBeDefined();
     });
 
     test('with sampling rules config option', () => {
-      const AWS = require('../')({ rules: {} }); // eslint-disable-line global-require
+      const AWS = require('../').withOptions({ rules: {} }); // eslint-disable-line global-require
       expect(new AWS.S3()).toBeDefined();
     });
 
     test('with daemon address config option', () => {
-      const AWS = require('../')({ daemonAddress: '127.0.0.1:2000' }); // eslint-disable-line global-require
+      const AWS = require('../').withOptions({ daemonAddress: '127.0.0.1:2000' }); // eslint-disable-line global-require
       expect(new AWS.S3()).toBeDefined();
     });
   });
@@ -51,17 +51,17 @@ describe('exports aws-sdk wrapped with the aws-xray-sdk', () => {
     });
 
     test('with no config options', () => {
-      const AWS = require('../')(); // eslint-disable-line global-require
+      const AWS = require('../'); // eslint-disable-line global-require
       expect(new AWS.S3()).toBeDefined();
     });
 
     test('with logger config option', () => {
-      const AWS = require('../')({ logger: console }); // eslint-disable-line global-require
+      const AWS = require('../').withOptions({ logger: console }); // eslint-disable-line global-require
       expect(new AWS.S3()).toBeDefined();
     });
 
     test('with sampling rules config option', () => {
-      const AWS = require('../')({ // eslint-disable-line global-require
+      const AWS = require('../').withOptions({ // eslint-disable-line global-require
         rules: {
           default: { fixed_target: 1, rate: 0.1 },
           version: 1,
@@ -71,7 +71,7 @@ describe('exports aws-sdk wrapped with the aws-xray-sdk', () => {
     });
 
     test('with daemon address config option', () => {
-      const AWS = require('../')({ daemonAddress: '127.0.0.1:2000' }); // eslint-disable-line global-require
+      const AWS = require('../').withOptions({ daemonAddress: '127.0.0.1:2000' }); // eslint-disable-line global-require
       expect(new AWS.S3()).toBeDefined();
     });
   });
