@@ -1,12 +1,12 @@
 'use strict';
 
 describe('exports aws-sdk wrapped with the aws-xray-sdk', () => {
-  describe('when XRAY_DISABLED is false', () => {
+  describe('when XRAY_DISABLED is \'false\'', () => {
     const oldEnv = {};
     beforeAll(() => {
       oldEnv.XRAY_DISABLED = process.env.XRAY_DISABLED;
       oldEnv.NODE_ENV = process.env.NODE_ENV;
-      process.env.XRAY_DISABLED = false;
+      process.env.XRAY_DISABLED = 'false';
       process.env.NODE_ENV = 'test';
     });
 
@@ -26,7 +26,7 @@ describe('exports aws-sdk wrapped with the aws-xray-sdk', () => {
     });
 
     test('with sampling rules config option', () => {
-      const AWS = require('../').withOptions({ rules: {} }); // eslint-disable-line global-require
+      const AWS = require('../').withOptions({ rules: { version: 1.0, default: { fixed_target: 1.0, rate: 0.1 } } }); // eslint-disable-line global-require
       expect(new AWS.S3()).toBeDefined();
     });
 

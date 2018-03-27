@@ -2,12 +2,13 @@
 
 const AWS = require('aws-sdk');
 const AWSXRay = require('aws-xray-sdk');
+const http = require('http');
+const https = require('https');
 
 function withOptions(options = {}) {
   const disabled = process.env.XRAY_DISABLED === undefined
-    ? (process.env.NODE_ENV === 'test')
-    : process.env.XRAY_DISABLED;
-
+    ? process.env.NODE_ENV.toLowerCase() === 'test'
+    : process.env.XRAY_DISABLED.toLowerCase() === 'true';
   if (disabled) {
     return AWS;
   }
@@ -23,6 +24,9 @@ function withOptions(options = {}) {
   if (options.daemonAddress) {
     AWSXRay.setDaemonAddress(options.daemonAddress);
   }
+
+  AWSXRay.captureHTTPsGlobal(http);
+  AWSXRay.captureHTTPsGlobal(https);
 
   return AWSXRay.captureAWS(AWS);
 }
