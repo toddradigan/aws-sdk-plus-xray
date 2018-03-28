@@ -6,10 +6,14 @@ const http = require('http');
 const https = require('https');
 
 function withOptions(options = {}) {
-  const disabled = process.env.XRAY_DISABLED === undefined
-    ? process.env.NODE_ENV.toLowerCase() === 'test'
-    : process.env.XRAY_DISABLED.toLowerCase() === 'true';
-  if (disabled) {
+  // defaults to enabled
+  const disabled = process.env.XRAY_DISABLED
+    && process.env.XRAY_DISABLED.toLowerCase() === 'true';
+
+  const testEnv = process.env.NODE_ENV
+    && process.env.NODE_ENV.toLowerCase() === 'test';
+
+  if (disabled || testEnv) {
     return AWS;
   }
 
