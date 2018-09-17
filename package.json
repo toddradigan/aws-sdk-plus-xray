@@ -1,6 +1,6 @@
 {
   "name": "aws-sdk-plus-xray",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Wrapper around the aws-sdk and aws-xray-sdk-core",
   "main": "index.js",
   "scripts": {
@@ -39,7 +39,9 @@
   "jest": {
     "bail": true,
     "collectCoverage": true,
-    "collectCoverageFrom": ["index.js"],
+    "collectCoverageFrom": [
+      "index.js"
+    ],
     "coverageDirectory": "coverage",
     "coverageThreshold": {
       "global": {
